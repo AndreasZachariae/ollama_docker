@@ -19,10 +19,6 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 RUN python3.11 -m venv /venv
 RUN . /venv/bin/activate && pip install open-webui
 
-# Configure open-webui
-ENV WEBUI_AUTH=False
-ENV OFFLINE_MODE=True
-
 ##############################################################################
 ##                                 Autostart                                ##
 ##############################################################################
@@ -35,6 +31,10 @@ COPY ./Modelfile /Modelfile
 RUN ollama serve & sleep 5 && \
     ollama create ${LLM_MODEL}-system-prompt -f /Modelfile && \
     pkill ollama
+
+# Configure open-webui
+ENV WEBUI_AUTH=False
+# ENV OFFLINE_MODE=True
 
 # Entrypoint set in base image
 # ENTRYPOINT [ "/bin/ollama" ]
