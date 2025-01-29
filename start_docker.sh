@@ -9,6 +9,7 @@ docker run \
     --rm \
     --gpus=all \
     -p 11434:11434 \
+    -p 8080:8080 \
     ${CONTAINER_NAME}:${LLM_MODEL} \
     /bin/bash
 

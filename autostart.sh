@@ -15,8 +15,11 @@ docker run \
     ${CONTAINER_NAME}:${LLM_MODEL}
 
 echo "Container is up and running in background!"
-echo "CTRL+D to exit"
 
-docker exec -it ${CONTAINER_NAME} ollama run ${LLM_MODEL}:${LLM_SIZE}-system-prompt
+# Launch only ollama without webui
+# echo "CTRL+D to exit"
+# docker exec -it ${CONTAINER_NAME} ollama run ${LLM_MODEL}:${LLM_SIZE}-system-prompt
+
+docker exec -it ${CONTAINER_NAME} bash -c "source /venv/bin/activate && open-webui serve"
 
 docker stop ${CONTAINER_NAME}

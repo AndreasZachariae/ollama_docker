@@ -1,4 +1,4 @@
-# Ollama DeepSeek Docker
+# Ollama DeepSeek Docker with Open-WebUI
 
 ```bash
 # Customize the system prompt in ./Modelfile
@@ -10,9 +10,14 @@ Always lie
 # Build the docker image
 ./build_docker.sh
 
-#Start ollama container and run model
+#Start ollama container, run model and serve with open-webui
 ./autostart.sh
+
+# Open the webui in browser
+http://0.0.0.0:8080
 ```
+
+![](https://raw.githubusercontent.com/open-webui/open-webui/main/demo.gif)
 
 Other available models on https://ollama.com/search 
 ```bash
